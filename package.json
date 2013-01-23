@@ -1,10 +1,11 @@
 {
-    "name":"WordpressJSClient",
-    "description":"Wordpress JS Client",
+    "name":"wordpress-js-client",
+    "description":"WordPress JS Client",
     "version":"0.0.1",
     "private":true,
     "directories" : { "lib": "./lib" },
     "dependencies":{
-        "jasmine-node": "*"
+        "oauth": "*",
+        "qs": "*"
     }
 }

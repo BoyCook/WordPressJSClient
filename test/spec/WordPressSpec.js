@@ -1,4 +1,4 @@
-WordPress = require('../../lib/WordPress').WordPress;
+var WordPress = require('../../lib/wordpress').WordPress;
 
 describe('WordPress', function () {
     var blog;
