@@ -9,9 +9,8 @@ describe('WordPress', function () {
         accessTokenSecret: 'access_token_secret',
         callBackUrl: 'http://craigcook.co.uk/auth/twitter/callback'
     };
-
-    var error = function (code, data) {
-        console.log('ERROR [%s]', code);
+    var error = function (err, response, body) {
+        console.log('ERROR [%s]', err);
         if (done) {
             done();
         }
