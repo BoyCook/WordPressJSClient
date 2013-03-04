@@ -9,12 +9,6 @@ describe('WordPress', function () {
         accessTokenSecret: 'access_token_secret',
         callBackUrl: 'http://craigcook.co.uk/auth/twitter/callback'
     };
-    var error = function (err, response, body) {
-        console.log('ERROR [%s]', err);
-        if (done) {
-            done();
-        }
-    };
 
     beforeEach(function (done) {
         blog = new WordPress(config);
@@ -24,11 +18,23 @@ describe('WordPress', function () {
     });
 
     it('should get posts', function (done) {
-        blog.getPosts('boycook.wordpress.com', undefined, error,
+        blog.getPosts('boycook.wordpress.com', undefined, {},
             function (data) {
-                expect(data.posts.length).toEqual(20);
+                expect(data.posts.length).toEqual(18);
                 done();
             }
         );
+    });
+
+    it('should handle error correctly', function (done) {
+        blog.getPosts('boycookxxxxxxxxx.wordpress.com', undefined, 
+			function(err, response, body) {
+                expect(err.statusCode).toEqual(404);
+		        console.log('ERROR [%s]', JSON.stringify(err));				
+		        if (done) {
+		            done();
+		        }	
+			}, 
+		{});
     });
 });
