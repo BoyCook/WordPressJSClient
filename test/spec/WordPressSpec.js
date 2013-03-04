@@ -19,8 +19,7 @@ describe('WordPress', function() {
 
 	it('should get posts', function(done) {
 		blog.getPosts('boycook.wordpress.com', undefined, {}, function(data) {
-			data = JSON.parse(data);
-			expect(data.posts.length).toEqual(18);
+			expect(JSON.parse(data).posts.length).toEqual(18);
 			done();
 		});
 	});
